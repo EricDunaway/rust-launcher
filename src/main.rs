@@ -13,7 +13,7 @@ mod step;
 fn main() -> Result<(), std::io::Error> {
     let child = match Command::new("bash")
         .arg("-c")
-        .arg("echo 'Hello World'; sleep 0.5; echo 'Bob'; sleep 2;")
+        .arg("echo 'Hello World';  echo 'Bob'; ")
         .stdout(Stdio::piped())
         .spawn()
     {
@@ -52,11 +52,13 @@ fn main() -> Result<(), std::io::Error> {
                 cwd: Cow::Borrowed(&*cwd),
                 command: Cow::from("echo"),
                 arguments: vec![Cow::from("Hello World")],
+                trigger: Cow::from("World"),
             },
             App {
                 cwd: Cow::Borrowed(&*cwd),
                 command: Cow::from("echo"),
                 arguments: vec![Cow::from("Hello Bob")],
+                trigger: Cow::from("Bob"),
             },
         ],
     });
@@ -67,6 +69,7 @@ fn main() -> Result<(), std::io::Error> {
             cwd: Cow::Borrowed(&*cwd),
             command: Cow::from("echo"),
             arguments: vec![Cow::from("Hi Bob")],
+            trigger: Cow::from("Bob"),
         }],
     });
 

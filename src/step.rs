@@ -10,6 +10,8 @@ pub struct App<'input> {
     pub(crate) command: Cow<'input, str>,
     #[serde(borrow)]
     pub(crate) arguments: Vec<Cow<'input, str>>,
+    #[serde(borrow)]
+    pub(crate) trigger: Cow<'input,str>
 }
 
 #[derive(Deserialize, Serialize, Debug)]
