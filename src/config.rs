@@ -1,19 +1,20 @@
 use crate::step::Step;
 use serde::{Deserialize, Serialize};
+use std::borrow::Cow;
 use std::fmt::Debug;
 
 #[derive(Deserialize, Serialize, Debug)]
-pub struct Config {
-    pub config_version: String,
-    pub step: Vec<Step>,
+pub struct Config<'a> {
+    #[serde(borrow)]
+    pub config_version: Cow<'a, str>,
+    #[serde(borrow)]
+    pub step: Vec<Step<'a>>,
 }
 
-impl Config {}
-
-impl Default for Config {
-    fn default() -> Config {
+impl Default for Config<'static> {
+    fn default() -> Config<'static> {
         Config {
-            config_version: String::from("0.0.1"),
+            config_version: Cow::from("0.0.1"),
             step: vec![],
         }
     }
