@@ -15,3 +15,4 @@ incremental = false
 toml = "0.5"
 serde = { version = "1.0", features = ["derive"] }
 tokio = { version = "0.2", features = ["process", "rt-core", "io-util"]}
+anyhow = "1.0"

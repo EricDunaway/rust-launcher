@@ -6,7 +6,6 @@ use tokio::task;
 use crate::config::Config;
 use crate::step::{App, Step};
 
-#[allow(dead_code)]
 pub struct Executor {
     pub steps: Vec<ExecStep>,
     pub current_step: Option<usize>,

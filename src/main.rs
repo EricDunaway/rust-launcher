@@ -4,6 +4,7 @@ use std::fs::read_to_string;
 
 mod config;
 mod exec;
+mod message;
 mod step;
 
 fn main() -> Result<(), std::io::Error> {
